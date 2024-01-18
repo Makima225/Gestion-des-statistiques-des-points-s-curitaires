@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-4 fw-bolder font-weight-bold">Localités:</div>
+        <div class="col-4">
+            <!-- Barre de recherche -->
+            <form class="d-flex ms-auto" method="get" action="{% url 'event-search' %}">
+                <input class="form-control me-2" type="search" placeholder="Localités" name="locality" aria-label="Rechercher">
+                <button class="btn btn-outline-primary" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <a class="btn btn-outline-primary" href="{% url 'add-event' %}">Enregistrer un evenement </a>
+    </div>
+    <div class="mt-3">
+        <!-- Tableau pour afficher les catégories d'événements -->
+        <table id="categoriesTable">
+            <thead>
+                <tr>
+                    <th>Nom de la catégorie</th>
+
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for category in categories_in_locality %}
+                <tr>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="{% url 'show-event' category.id %}">Voir événements</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

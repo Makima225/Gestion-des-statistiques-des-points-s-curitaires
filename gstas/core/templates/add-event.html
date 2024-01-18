@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Enregistrement d'Événement</h4>
+                    <a class="btn btn-outline-primary" href="{% url 'index' %}">RETOUR</a>
+                </div>
+                <div class="card-body">
+                    <form method="post" >
+                        {% csrf_token %}
+                       
+                        <div class="mb-3">
+                           {{ form }}
+                        </div>
+
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {{ form.errors }}
+                        </div>
+                        {% endif %}
+
+                        
+
+                        <button type="submit" class="btn btn-primary">Enregistrer l'Événement</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

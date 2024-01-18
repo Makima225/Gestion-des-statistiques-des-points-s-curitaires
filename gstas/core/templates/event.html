@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<div>
+    {% if events %}
+    <ul>
+        {% for event in events %}
+        <li>
+            <strong>{{ event.title }}</strong><br> Description: {{ event.description }}<br> Date de l'événement: {{ event.date_of_event }}<br> Unité: {{ event.unit.name }}<br> Localité: {{ event.locality.name }}<br>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Aucun événement trouvé pour cette catégorie.</p>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}
